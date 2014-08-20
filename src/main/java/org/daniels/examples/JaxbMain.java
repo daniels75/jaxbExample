@@ -23,7 +23,7 @@ public class JaxbMain {
 	private static final String JAXB_FILE_NAME = "example.xml";
 	JAXBContext context;
 	
-	public static void main(String[] args) throws JAXBException, FileNotFoundException {
+	public static void main(String[] args) throws Exception {
 		JaxbMain serializer = new JaxbMain();
 		final Currency currency = new Currency();
 		currency.setName("EUR");
