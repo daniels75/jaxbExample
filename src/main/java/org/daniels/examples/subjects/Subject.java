@@ -4,12 +4,14 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name = "Subject")
-@XmlType(name = "SubjectType")
+@XmlType(name = "Subject")
 @XmlAccessorType(XmlAccessType.NONE)
-public abstract class Subject  {
+@XmlSeeAlso(value = ExtendedSubject.class)
+public  class Subject  {
 
 	@XmlElement(name = "Id")
 	private int id;

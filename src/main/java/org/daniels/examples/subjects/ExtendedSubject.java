@@ -4,16 +4,17 @@ import java.util.Date;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name = "SubSubject")
-public class SubSubject extends Subject {
+@XmlType(name = "ExtendedSubject")
+public class ExtendedSubject extends Subject {
 
 	@XmlElement(name = "ExtraName")
 	private String extraName;
 	@XmlElement(name = "Created")
 	private Date created;
 	
-	@XmlElement(name="CreatedStr")
 	private String createdStr;
 	
 	public String getCreatedStr() {

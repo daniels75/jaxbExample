@@ -1,6 +1,5 @@
 package org.daniels.examples.subjects;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.xml.bind.JAXBContext;
@@ -10,19 +9,31 @@ public class SubjectMain {
 	public static void main(String[] args) throws Exception {
 
 		Subject subject = createSubject();
+		ExtendedSubject extendedSubject = createExtendedSubject();
+		
+		SubjectWrapper subjectWrapper = new SubjectWrapper();
+		subjectWrapper.setSubject(extendedSubject);
 
-		JAXBContext jaxbContext = JAXBContext.newInstance(Subject.class, SubSubject.class);
+		JAXBContext jaxbContext = JAXBContext.newInstance(SubjectWrapper.class, Subject.class, ExtendedSubject.class);
 		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
 		// output pretty printed
 		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-		jaxbMarshaller.marshal(subject, System.out);
+		jaxbMarshaller.marshal(subjectWrapper, System.out);
 
 	}
 
 	private static Subject createSubject() {
-		SubSubject subject = new SubSubject();
+		Subject subject = new Subject();
+		subject.setId(100);
+		subject.setName("daniels");
+		subject.setAge(29);
+		return subject;
+	}
+	
+	private static ExtendedSubject createExtendedSubject() {
+		ExtendedSubject subject = new ExtendedSubject();
 		subject.setId(100);
 		subject.setName("daniels");
 		subject.setAge(29);
